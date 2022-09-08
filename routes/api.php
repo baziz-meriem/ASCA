@@ -6,7 +6,31 @@ use App\Http\Controllers\AuthController;
 Route::group(['prefix' => 'auth'],function(){
     Route::post('register',[AuthController::class, 'register']);
     Route::post('login',[AuthController::class, 'login']);
+
+    Route::group(['middleware' => 'auth:api'],function (){
+        Route::get('logout',[AuthController::class, 'logout']);
+
+    });
+
 });
+
+Route::group(['prefix' => 'user'],function(){
+    Route::group(['middleware' => 'auth:api'], function(){
+        Route::post('create-category', function () {
+            return response()->json([
+                'message' => 'Admin access',
+                'status_code' => 200
+            ],200);
+        })->middleware('scope:do-anything');//the access token must have this scope to access the route (only admin)
+        Route::post('edit-category', function () {
+            return response()->json([
+                'message' => 'Everyone access',
+                'status_code' => 200
+            ],200);
+        })->middleware('scope:do-anything,can-create');   // comma means or 
+    });
+});
+
 Route::resource('categories','CategoryController');
 
 /*
