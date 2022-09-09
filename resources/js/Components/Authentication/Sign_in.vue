@@ -7,11 +7,11 @@
          </svg>
       </div>
       <h2 class="text-4xl tracking-tight">
-         Sign in into your account
+         Sign in to your account
       </h2>
-      <span class="text-sm">or <a href="#" class="text-blue-500"> 
+      <span class="text-sm">or <router-link to="/register" class="text-blue-500"> 
          register a new account
-      </a>
+        </router-link>
    </span>
 </div>
 <div class="flex justify-center my-2 mx-4 md:mx-0">
@@ -19,7 +19,7 @@
       <div class="flex flex-wrap -mx-3 mb-6">
          <div class="w-full md:w-full px-3 mb-6">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for='Password'>Email address</label>
-            <input class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none" type='email'  required>
+            <input class="block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none" type='email'  required>
          </div>
          <div class="w-full md:w-full px-3 mb-6">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for='Password'>Password</label>
@@ -31,7 +31,7 @@
                <span class="text-sm text-gray-700 pt-1">Remember Me</span>
             </label>
             <div class="w-1/2 text-right">
-               <a href="#" class="text-blue-500 text-sm tracking-tight">Forget your password?</a>
+               <router-link to="/ResetPassword" class="text-blue-500 text-sm tracking-tight">Forget your password?</router-link>
             </div>
          </div>
          <div class="w-full md:w-full px-3 mb-6">
