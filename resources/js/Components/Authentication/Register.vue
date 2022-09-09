@@ -68,8 +68,7 @@
 
     </template>  
     <script>
-import axios from 'axios';
-
+import auth from './auth.js';
         export default {
             name:'Register',
         data() {
@@ -85,8 +84,8 @@ import axios from 'axios';
         methods: {
                 async register() {
                 console.log(this.user);
-                 await axios.post('/api/auth/Register', this.user)
-                    .then(() => {
+                 await auth.register(this.user)
+                    .then(({data}) => {
                         this.$router.push('/Register');
                     })
                     .catch((error) => {

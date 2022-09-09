@@ -68,7 +68,8 @@
 </div>
 </template>  
 <script>
-    import Auth from '../../Auth.js';
+import auth from './auth.js';
+
 export default {
    name: 'SignIn',
    data(){
@@ -82,9 +83,9 @@ export default {
    },
    methods:{
             async SignIn() { 
-                  await axios.post('/api/auth/SignIn', this.user)
-                    .then(() => {
-                        this.$router.push('/Welcome');  
+                  await auth.SignIn(this.user)
+                  .then(() => {
+                     console.log("sign in successfull");
                     })
                     .catch((error) => {
                         console.log(error);

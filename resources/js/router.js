@@ -1,11 +1,20 @@
 import {createRouter, createWebHistory}  from 'vue-router'
+import auth from './Components/Authentication/auth.js'
 
 const routes = [
     {
         path:'/',
         name:'Home',
         component:()=>import('./Components/Home.vue'),
+        //children:[{},{}],
 
+        beforeEnter(to,from,next) { //route accessible only if logged in
+            if(! auth.isLoggedIn()) {
+               next('/SignIn');
+            } else {
+                next('/Home')
+            }
+        }
     }
     ,
     {
