@@ -9,25 +9,25 @@
       <h2 class="text-4xl tracking-tight">
          Sign in to your account
       </h2>
-      <span class="text-sm">or <router-link to="/register" class="text-blue-500"> 
+      <span class="text-sm">or <router-link to="/Register" class="text-blue-500"> 
          register a new account
         </router-link>
    </span>
 </div>
 <div class="flex justify-center my-2 mx-4 md:mx-0">
-   <form class="w-full max-w-xl bg-white rounded-lg shadow-md p-6">
+   <form class="w-full max-w-xl bg-white rounded-lg shadow-md p-6" v-on:submit.prevent="SignIn">
       <div class="flex flex-wrap -mx-3 mb-6">
          <div class="w-full md:w-full px-3 mb-6">
-            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for='Password'>Email address</label>
-            <input class="block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none" type='email'  required>
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for='email'>Email address</label>
+            <input class="block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none" type='email'  required v-model="user.email">
          </div>
          <div class="w-full md:w-full px-3 mb-6">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for='Password'>Password</label>
-            <input class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none" type='password' required>
+            <input class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none" type='password' required v-model="user.password">
          </div>
          <div class="w-full flex items-center justify-between px-3 mb-3 ">
             <label for="remember" class="flex items-center w-1/2">
-               <input type="checkbox" name="" id="" class="mr-1 bg-white shadow">
+               <input type="checkbox" value="remember_me" class="mr-1 bg-white shadow" v-model="user.remember_me">
                <span class="text-sm text-gray-700 pt-1">Remember Me</span>
             </label>
             <div class="w-1/2 text-right">
@@ -35,7 +35,7 @@
             </div>
          </div>
          <div class="w-full md:w-full px-3 mb-6">
-            <button class="appearance-none block w-full bg-blue-600 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-blue-500 focus:outline-none focus:bg-white focus:border-gray-500">Sign in</button>
+            <button class="appearance-none block w-full bg-blue-600 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-blue-500 focus:outline-none focus:bg-white focus:border-gray-500" type="submit">Sign in</button>
          </div>
          <div class="mx-auto -mb-6 pb-1">
             <span class="text-center text-xs text-gray-700">or sign up with</span>
@@ -67,3 +67,30 @@
    </form>
 </div>
 </template>  
+<script>
+    import Auth from '../../Auth.js';
+export default {
+   name: 'SignIn',
+   data(){
+        return {      
+         user:{
+         email: '',
+         password:'',
+         remember_me: false,
+      }
+   }
+   },
+   methods:{
+            async SignIn() { 
+                  await axios.post('/api/auth/SignIn', this.user)
+                    .then(() => {
+                        this.$router.push('/Welcome');  
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+  
+                  }                 
+               }
+}
+</script>

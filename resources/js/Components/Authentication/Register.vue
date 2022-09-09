@@ -11,7 +11,7 @@
           </h2>
     </div>
     <div class="flex justify-center my-2 mx-4 md:mx-0">
-       <form class="w-full max-w-xl bg-white rounded-lg shadow-md p-6">
+       <form class="w-full max-w-xl bg-white rounded-lg shadow-md p-6" v-on:submit.prevent="register">
           <div class="flex flex-wrap -mx-3 mb-6">
              <div class="w-full md:w-full px-3 mb-6">
                 <div class="w-full md:w-full px-3 mb-6">
@@ -34,7 +34,7 @@
              <div class="w-full flex items-center justify-between px-3 mb-3 ">
              </div>
              <div class="w-full md:w-full px-3 mb-6">
-                <button class="appearance-none block w-full bg-blue-600 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-blue-500 focus:outline-none focus:bg-white focus:border-gray-500" @click="register()">Register</button>
+                <button class="appearance-none block w-full bg-blue-600 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-blue-500 focus:outline-none focus:bg-white focus:border-gray-500" type="submit">Register</button>
              </div>
              <div class="mx-auto -mb-6 pb-1">
                 <span class="text-center text-xs text-gray-700">or sign up with</span>
@@ -71,7 +71,7 @@
 import axios from 'axios';
 
         export default {
-            name:'register',
+            name:'Register',
         data() {
             return {
                 user:{
@@ -83,19 +83,17 @@ import axios from 'axios';
             }
         },
         methods: {
-            async register () {
-                try {
-                    await axios.post("/api/auth/register",this.user);
-                   // this.$router.push('/Sign_in')
-                } catch (error) {
-                        this.flashMessage.error({
-                            message: 'Some error occured, Please try again!',
-                            time: 5000
-                        });
-                    }
-                }
+                async register() {
+                console.log(this.user);
+                 await axios.post('/api/auth/Register', this.user)
+                    .then(() => {
+                        this.$router.push('/Register');
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
            
-
+                  }
                 }
-            }
+               }
     </script>

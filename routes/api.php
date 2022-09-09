@@ -4,8 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 Route::group(['prefix' => 'auth'],function(){
-    Route::post('register',[AuthController::class, 'register']);
-    Route::post('login',[AuthController::class, 'login']);
+    Route::post('Register',[AuthController::class, 'Register']);
+    Route::post('SignIn',[AuthController::class, 'SignIn']);
 
     Route::group(['middleware' => 'auth:api'],function (){
         Route::get('logout',[AuthController::class, 'logout']);
@@ -13,7 +13,6 @@ Route::group(['prefix' => 'auth'],function(){
     });
 
 });
-
 Route::group(['prefix' => 'user'],function(){
     Route::group(['middleware' => 'auth:api'], function(){
         Route::post('create-category', function () {

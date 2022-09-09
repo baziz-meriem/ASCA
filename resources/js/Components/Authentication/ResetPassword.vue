@@ -22,7 +22,26 @@
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for='email'>Email address</label>
                 <input class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none" type='email'  required>
              </div>
+             <div class="w-full md:w-full px-3 mb-6">
+            <button class="appearance-none block w-full bg-blue-600 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-blue-500 focus:outline-none focus:bg-white focus:border-gray-500" @click="reset">Reset</button>
+         </div>
           </div>
        </form>
     </div>
+   
     </template>  
+    <script>
+      export default{
+         data(){
+            return{}
+         },
+         methods:{
+           reset (){
+            this.$router.push('/SignIn');
+           }
+         }
+      }
+
+    
+    </script>
+    

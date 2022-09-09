@@ -3,19 +3,25 @@ import {createRouter, createWebHistory}  from 'vue-router'
 const routes = [
     {
         path:'/',
-        name:'register',
-        component:()=>import('./Components/Authentication/register.vue')
+        name:'Home',
+        component:()=>import('./Components/Home.vue'),
+
     }
     ,
     {
-        path:'/home',
-        name:'Home',
-        component:()=>import('./Components/home.vue')
+        path:'/Register',
+        name:'Register',
+        component:()=>import('./Components/Authentication/Register.vue')
     },
     {
-        path:'/Sign_in',
-        name:'Sign_in',
-        component:()=>import('./Components/Authentication/Sign_in.vue')
+        path:'/Welcome',
+        name:'Welcome',
+        component:()=>import('./Components/Welcome.vue')
+    },
+    {
+        path:'/SignIn',
+        name:'SignIn',
+        component:()=>import('./Components/Authentication/SignIn.vue')
     },
     {
         path:'/ResetPassword',
@@ -28,6 +34,7 @@ const routes = [
 const router = createRouter({
     history:createWebHistory(),
     routes
-})
+});
+
 
 export default router

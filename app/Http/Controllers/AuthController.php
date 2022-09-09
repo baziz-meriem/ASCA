@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    public function register(Request$request){
+    public function Register(Request$request){
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email',
@@ -34,7 +34,7 @@ class AuthController extends Controller
         }
     }
 
-    public function login (Request $request) {
+    public function SignIn (Request $request) {
         $request->validate([
             'email' => 'required|string|email',
             'password' => 'required|string',
@@ -43,7 +43,7 @@ class AuthController extends Controller
 
         if(!Auth::attempt(['email' => $request->email, 'password' => $request->password])){
             return response()->json([
-                'message' => 'Unauthorized',
+                'message' => 'UnAuthorised Access',
                 'status_code' => 401
             ],401);
         }
@@ -66,8 +66,8 @@ class AuthController extends Controller
                 'token_type' => 'Bearer',
                 'token_scope' => $tokenData->token->scopes[0],
                 'expires_at' => Carbon::parse($tokenData->token->expires_at)->toDateTimeString(),
-                'status_code' => 401
-            ],401);
+                'status_code' => 200
+            ],200);
         }else{
             return response()->json([
                 'message' => 'Some error occured, Please try again',
