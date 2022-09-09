@@ -8,9 +8,9 @@ const routes = [
     }
     ,
     {
-        path:'/Welcome',
-        name:'Welcome',
-        component:()=>import('./Components/Welcome.vue')
+        path:'/Register',
+        name:'Register',
+        component:()=>import('./Components/Authentication/Register.vue')
     }
 ]
 

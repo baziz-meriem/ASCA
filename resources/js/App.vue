@@ -1,8 +1,8 @@
 <template>
     <div id="app">
-      <router-link to="/Welcome">Welcome</router-link>
-      hi from appjs
+      <router-link to="/Register">Register</router-link>
+      
     </div>
-    <router-view/>
+    <router-view></router-view>
   </template>
   
