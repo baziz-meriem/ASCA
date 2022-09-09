@@ -3,16 +3,16 @@ import auth from './Components/Authentication/auth.js'
 
 const routes = [
     {
-        path:'/',
+        path:'/Home',
         name:'Home',
         component:()=>import('./Components/Home.vue'),
         //children:[{},{}],
 
         beforeEnter(to,from,next) { //route accessible only if logged in
-            if(! auth.isLoggedIn()) {
-               next('/SignIn');
+            if(!auth.isLoggedIn()) {
+               next('/SignIn');//if the user is not logged in
             } else {
-                next('/Home')
+                next('/Welcome')
             }
         }
     }
@@ -23,14 +23,21 @@ const routes = [
         component:()=>import('./Components/Authentication/Register.vue')
     },
     {
-        path:'/Welcome',
+        path:'/',
         name:'Welcome',
         component:()=>import('./Components/Welcome.vue')
     },
     {
         path:'/SignIn',
         name:'SignIn',
-        component:()=>import('./Components/Authentication/SignIn.vue')
+        component:()=>import('./Components/Authentication/SignIn.vue'),
+        beforeEnter(to,from,next) { //route accessible only if logged in
+            if(!auth.isLoggedIn()) {
+               next();
+            } else {
+                next('/Home')
+            }
+        }
     },
     {
         path:'/ResetPassword',
@@ -41,8 +48,9 @@ const routes = [
 ]
 
 const router = createRouter({
-    history:createWebHistory(),
-    routes
+    history: createWebHistory(),//for url form
+    routes:routes,
+    linkActiveClass:'active'
 });
 
 

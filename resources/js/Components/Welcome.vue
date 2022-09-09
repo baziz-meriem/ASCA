@@ -1,7 +1,15 @@
 <template>
-    <div>
-        <h1>Welcome </h1>
-        <h4>The logged in user details Here</h4><br>
-
-    </div>
+    here welcome page
+    <button class="bg-red-100" @click="logout">Logout</button>
 </template>
+<script>
+    import auth from './Authentication/auth.js'
+    export default {
+     methods:{
+       async logout() {
+           await auth.logout();
+            this.$router.push('/SignIn');
+       }
+     }
+    }
+   </script>

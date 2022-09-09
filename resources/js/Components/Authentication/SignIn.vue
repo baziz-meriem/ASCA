@@ -83,7 +83,7 @@ export default {
    },
    methods:{
             async SignIn() { 
-                  await auth.SignIn(this.user)
+                  await auth.signIn(this.user)
                   .then(() => {
                      console.log("sign in successfull");
                     })
