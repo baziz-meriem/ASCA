@@ -30,10 +30,10 @@ class SignalementsSeeder extends Seeder
             'codePostale' => '1558',
             'depassement' => Str::random(10),
             'depass_description' => Str::random(10),
-            'voir_respo' => 'false',
+            'voir_respo' => false,
             'conduit' => Str::random(10),
             'solution_propose' => Str::random(10),
-            'deleted' => 'false',
+            'deleted' => false,
             'user_id' => $id,
             'date_creation' => Carbon::now(),
         ]);

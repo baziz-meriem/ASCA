@@ -27,7 +27,7 @@ return new class extends Migration
             // Types : BureauWilay/ BureauCommune / BureauDaira/ BureauNational
             $table->string("type");
             $table->string("localisation");
-            $table->timestamps();
+            $table->date('date_creation');
         });
     }
 

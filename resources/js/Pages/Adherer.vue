@@ -1,5 +1,5 @@
 <template>
-        <default-layout>
+        <user-layout>
             <div class="mx-10 p-4 my-4 relative">
                 <img
                     alt="signalement"
@@ -91,20 +91,20 @@
                 </div>
             </div>
             <component  v-bind:is="steps[step]" @next="nextStep" @scroll="scrollTop" > </component>
-        </default-layout>
+        </user-layout>
 </template>
 
 <script>
-    import DefaultLayout from "../Layouts/DefaultLayout.vue";
     import Form2Adhesion from "../Components/CitizenComponents/Forms/Form2Adhesion.vue";
     import Form3Adhesion from "../Components/CitizenComponents/Forms/Form3Adhesion.vue";
     import Form4Adhesion from "../Components/CitizenComponents/Forms/Form4Adhesion.vue";
     import { ref } from "vue";
+    import UserLayout from "../Layouts/UserLayout.vue";
 
     export default {
-        name: "CitizenHome",
+        name: "Adherer",
         components: {
-            DefaultLayout,
+            UserLayout,
         },
         setup() {
         const step = ref(0);

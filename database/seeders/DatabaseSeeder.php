@@ -19,7 +19,19 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
-         $this->call(AdminSeeder::class);    
-    
+         $this->call(AdminSeeder::class);
+         $this->call(PaysSeeder::class);
+         $this->call(WilayasSeeder::class);
+         $this->call(DairasSeeder::class);
+         $this->call(CommunesSeeder::class);
+         $this->call(Bureau_ascaSeeder::class);
+
+         for ($x = 0; $x <= 10; $x++) {//to insert more than one record
+        
+         $this->call(SignalementsSeeder::class);
+         $this->call(AdhesionsSeeder::class);
+         $this->call(ContributionsSeeder::class);  
+         }  
+
     }
 }

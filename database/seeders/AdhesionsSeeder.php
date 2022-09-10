@@ -34,10 +34,10 @@ class AdhesionsSeeder extends Seeder
             'code_postal' => Str::random(10),
             'ville' => Str::random(10),
             'fonction' => $fonctionValues[rand(0,1)],
-            'deleted' => 'false',
+            'deleted' => false,
             'user_id' => $id,
             'bureau_id'=>$bureauid,
-            'date_creation' => Carbon::now(),
+            'date_creation' => Carbon::now()->toDateString(),
         ]);
      }
 }

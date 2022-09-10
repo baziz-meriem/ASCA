@@ -29,14 +29,14 @@ class ContributionsSeeder extends Seeder
             'commune' => Str::random(10),
             'daira' => Str::random(10),
             'codePostale' => rand(0,10),
-            'maire' => 'false',
-            'deputé' => 'false',
-            'wali' => 'false',
+            'maire' => false,
+            'deputé' => false,
+            'wali' => false,
             'description' => Str::random(10),
             'proposition' => Str::random(10),
-            'deleted' => 'false',
+            'deleted' => false,
             'user_id' => $id,
-            'date_creation' => Carbon::now(),
+            'date_creation' => Carbon::now()->toDateString(),
         ]);
     }
 }

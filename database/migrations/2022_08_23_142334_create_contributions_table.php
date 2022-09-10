@@ -29,9 +29,9 @@ return new class extends Migration
             $table->string("daira")->nullable();
             $table->integer("codePostale")->nullable();
             //autorités locales
-            $table->boolean("maire")->nullable();
-            $table->boolean("deputé")->nullable();
-            $table->boolean("wali")->nullable();
+            $table->boolean("maire");
+            $table->boolean("deputé");
+            $table->boolean("wali");
             $table->text("description");
             $table->text("proposition");
             $table->boolean("deleted")->default(false);

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class CommunesSeeder extends Seeder
+class Bureau_ascaSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,14 +16,16 @@ class CommunesSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('communes')->insert([
+        DB::table('bureau__asca')->insert([
             'id' =>1,
-            'nom' => Str::random(10),
+            'pays_id' =>1,
+            'wilayas_id' =>1,
             'dairas_id'=>1,
-            'created_at' => Carbon::now()->toDateString(),
-            'updated_at' => Carbon::now()->toDateString(),
+            'communes_id' =>1,
+            'codePostale' =>1234,
+            'type' => Str::random(10),
+            'localisation' => Str::random(10),
+            'date_creation' => Carbon::now()->toDateString(),
         ]);
     }
-
-    }
-
+}

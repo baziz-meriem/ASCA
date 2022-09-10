@@ -49,7 +49,7 @@ class AuthController extends Controller
         }
         $user = $request ->user();
 
-        if($user->role == 'administrator') {
+        if($user->role == 'administrateur') {
             $tokenData = $user->createToken('Personal Access Token',['do-anything']);
         }else {
             $tokenData = $user->createToken('Personal Access Token',['can-create']);

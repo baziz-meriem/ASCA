@@ -3,8 +3,8 @@
    
         <div class="flex gap-8 items-center">
            <router-link to="/"> <div> LOGO </div> </router-link>
-            <a href="/Signaler" class="text-sm text-orangeColor dark:text-orangeColor border-2 rounded-md border-orangeColor px-5 py-2 ">Signaler</a>
-            <a href="/Signaler" class="text-sm text-yellowColor dark:text-primcolor border-2 rounded-md border-yellowColor px-5 py-2 ">Contribuer</a>
+           <router-link to="/Signaler"> <button  class="text-sm text-orangeColor dark:text-orangeColor border-2 rounded-md border-orangeColor px-5 py-2 ">Signaler</button></router-link>
+           <router-link to="/Contribuer/:id?"> <button class="text-sm text-yellowColor dark:text-primcolor border-2 rounded-md border-yellowColor px-5 py-2 ">Contribuer</button></router-link>
         </div>
     
     <div class="flex gap-8 items-center">

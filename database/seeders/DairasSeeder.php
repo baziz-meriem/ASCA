@@ -20,8 +20,8 @@ class DairasSeeder extends Seeder
             'id' =>1,
             'nom' => Str::random(10),
             'wilayas_id'=>1,
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
+            'created_at' => Carbon::now()->toDateString(),
+            'updated_at' => Carbon::now()->toDateString(),
         ]);
     }
 }
