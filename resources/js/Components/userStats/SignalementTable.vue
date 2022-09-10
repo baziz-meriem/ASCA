@@ -112,6 +112,7 @@
             </h1>
             <h1></h1>
         </div>
+        <div v-if="loading" class="py-10 text-center">Loading ...</div>
         <div class="h-72 mb-32">
             <div
                 class="w-full flex flex-col"
@@ -240,6 +241,7 @@ export default {
             .get(`/api/signalement/User/${this.$route.params.id}`)
             .then((response) => {
                 this.setData(response.data);
+                this.loading = false;
             });
     },
     components: {
@@ -269,6 +271,7 @@ export default {
             searchDate: "",
             dateSelect: false,
             signalements: [],
+            loading: true,
         };
     },
 

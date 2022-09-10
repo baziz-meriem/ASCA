@@ -23,15 +23,13 @@
                 '--swiper-pagination-color': '#529B9B',
             }"
             :modules="modules"
-            :slidesPerView="3"
-            :centeredSlides="true"
+            :slidesPerView="4"
             :spaceBetween="20"
             :pagination="{
                 clickable: true,
             }"
-            :initialSlide="2"
+            :initialSlide="1"
             :navigation="true"
-            :virtual="true"
             class="mySwiper"
             @swiper="setSwiperRef"
         >
@@ -70,31 +68,43 @@ export default {
                 title: "Reboisement 1",
                 content:
                     "Célébration de la Journée nationale de l'arbre: les Directions de l'environnement de wilaya organisent des opérations de reboisement",
-                image: "https://picsum.photos/900",
+                image: "https://www.gettyimages.fr/gi-resources/images/500px/983703508.jpg",
             },
             {
                 title: "Reboisement2",
                 content:
                     "Célébration de la Journée nationale de l'arbre: les Directions de l'environnement de wilaya organisent des opérations de reboisement",
-                image: "https://picsum.photos/900",
+                image: "https://www.gettyimages.fr/gi-resources/images/500px/983703508.jpg",
             },
             {
                 title: "Nettoyage des plages3",
                 content:
                     "Célébration de la Journée nationale de l'arbre: les Directions de l'environnement de wilaya organisent des opérations de reboisement",
-                image: "https://picsum.photos/900",
+                image: "https://www.gettyimages.fr/gi-resources/images/500px/983703508.jpg",
             },
             {
                 title: "Lutte contre le cancer4",
                 content:
                     "Célébration de la Journée nationale de l'arbre: les Directions de l'environnement de wilaya organisent des opérations de reboisement",
-                image: "https://picsum.photos/900",
+                image: "https://www.gettyimages.fr/gi-resources/images/500px/983703508.jpg",
             },
             {
                 title: "Nettoyage des plages5",
                 content:
                     "Célébration de la Journée nationale de l'arbre: les Directions de l'environnement de wilaya organisent des opérations de reboisement",
-                image: "https://picsum.photos/900",
+                image: "https://www.gettyimages.fr/gi-resources/images/500px/983703508.jpg",
+            },
+            {
+                title: "Nettoyage des plages5",
+                content:
+                    "Célébration de la Journée nationale de l'arbre: les Directions de l'environnement de wilaya organisent des opérations de reboisement",
+                image: "https://www.gettyimages.fr/gi-resources/images/500px/983703508.jpg",
+            },
+            {
+                title: "Nettoyage des plages5",
+                content:
+                    "Célébration de la Journée nationale de l'arbre: les Directions de l'environnement de wilaya organisent des opérations de reboisement",
+                image: "https://www.gettyimages.fr/gi-resources/images/500px/983703508.jpg",
             },
         ];
 

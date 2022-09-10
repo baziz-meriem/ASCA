@@ -76,23 +76,19 @@
                     <div class="text-sm mx-2 font-semibold w-1/2">
                         Numéro de téléphone:
                     </div>
-                    <div class="text-sm mx-2">+2137 95 95 11 19</div>
+                    <div class="text-sm mx-2">{{ userData.phoneNumber }}</div>
                 </div>
                 <div class="flex mb-4">
                     <div class="text-sm mx-2 font-semibold w-1/2">Adress:</div>
-                    <div class="text-sm mx-2">Oum el bouaghi</div>
+                    <div class="text-sm mx-2">{{ userData.address }}</div>
                 </div>
                 <div class="flex mb-4">
                     <div class="text-sm mx-2 font-semibold w-1/2">
                         Data de naissance:
                     </div>
-                    <div class="text-sm mx-2">{{ userData.email }}</div>
-                </div>
-                <div class="flex mb-4">
-                    <div class="text-sm mx-2 font-semibold w-1/2">
-                        Data de naissance:
+                    <div class="text-sm mx-2">
+                        {{ userData.date_de_naissance }}
                     </div>
-                    <div class="text-sm mx-2">{{ userData.email }}</div>
                 </div>
             </div>
             <div class="w-1/2">

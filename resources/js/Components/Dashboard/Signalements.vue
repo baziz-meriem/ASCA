@@ -112,6 +112,7 @@
             </h1>
             <h1></h1>
         </div>
+        <div v-if="loading" class="py-10 text-center"><Loader /></div>
         <div class="h-72 mb-32">
             <div
                 class="w-full flex flex-col"
@@ -221,6 +222,7 @@
     </div>
 </template>
 <script>
+import Loader from "../Dashboard/Loader.vue";
 /* import the fontawesome core */
 import { library } from "@fortawesome/fontawesome-svg-core";
 /* import font awesome icon component */
@@ -244,11 +246,13 @@ export default {
     mounted() {
         axios.get("/api/signalement").then((response) => {
             this.setData(response.data);
+            this.loading = false;
         });
     },
     components: {
         FontAwesomeIcon,
         Datepicker,
+        Loader,
     },
 
     setup: function () {
@@ -273,6 +277,7 @@ export default {
             searchDate: "",
             dateSelect: false,
             signalements: [],
+            loading: true,
         };
     },
 

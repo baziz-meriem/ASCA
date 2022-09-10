@@ -13,9 +13,23 @@
         </div>
         <div class="border-l-4 border-primcolor px-4 my-3">
             Numéro de télphone:
-            <label class="text-gray-500 text-sm px-5">{{ user.email }} </label>
+            <label class="text-gray-500 text-sm px-5"
+                >{{ user.phoneNumber }}
+            </label>
+        </div>
+        <div class="border-l-4 border-primcolor px-4 my-3">
+            Data de naissance:
+            <label class="text-gray-500 text-sm px-5"
+                >{{ user.date_de_naissance }}
+            </label>
         </div>
 
+        <div class="border-l-4 border-primcolor px-4 my-3">
+            Address:
+            <label class="text-gray-500 text-sm px-5"
+                >{{ user.address }}
+            </label>
+        </div>
         <hr />
         <div class="mt-10"></div>
 
@@ -87,14 +101,16 @@
         </div>
         <div class="mt-10">
             marquer comme
-            <form @submit="changeState" class="mt-4">
+            <form class="mt-4">
                 <select id="status_select">
                     <option value="">{{ signalement.statut }}</option>
+                    <option value="nouveau">nouveau</option>
                     <option value="en attente">en attente</option>
                     <option value="archivé">archivé</option>
                     <option value="traité">traité</option>
                 </select>
                 <button
+                    @click="changeState"
                     class="px-5 py-2 border mx-5 border-black"
                     type="submit"
                 >
@@ -133,10 +149,9 @@ export default {
         changeState(state) {
             let statut = {};
             statut["statut"] = document.getElementById("status_select").value;
+            console.log(statut);
             axios
-                .patch(`/api/signalement/${this.$route.params.id}`, {
-                    statut,
-                })
+                .patch(`/api/signalement/${this.$route.params.id}`, statut)
                 .then((re) => console.log("done"))
                 .catch((err) => console.log(err));
         },

@@ -10,7 +10,8 @@
         <div className="text-lg font-bold text-center text-white">
             Confirmer la creation de votre signalement!
         </div>
-        <div className="w-64 gap-4 flex mx-auto ">
+        <div v-if="submitting" class="mt-5"><Loader /></div>
+        <div v-if="!submitting" className="w-64 gap-4 flex mx-auto ">
             <button
                 className="form-button  text-white"
                 @click="createsignalement()"
@@ -315,6 +316,7 @@
 </template>
 
 <script>
+import Loader from "../../Dashboard/Loader.vue";
 //vuelidate imports APIComp
 import { reactive } from "vue";
 import useVuelidate from "@vuelidate/core";
@@ -334,11 +336,12 @@ import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 library.add(faExclamationCircle);
 
 export default {
-    components: { Datepicker, FontAwesomeIcon },
+    components: { Datepicker, FontAwesomeIcon, Loader },
     data: function () {
         return {
             signalementData: {},
             loggedUser: {},
+            submitting: false,
         };
     },
     setup() {
@@ -397,10 +400,13 @@ export default {
             }
         },
         createsignalement() {
+            this.submitting = true;
             axios.post("/api/signalement", this.signalementData).then(() => {
                 this.state.signalementAdded = true;
                 window.scrollTo(0, 0);
+
                 this.showConfirmationAlert(false);
+                this.submitting = false;
             });
         },
     },

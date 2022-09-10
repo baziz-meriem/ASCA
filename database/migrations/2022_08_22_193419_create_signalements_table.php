@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->enum('type', ['contribution', 'signalement', 'adhesion'])->default('signalement');
             $table->enum('nature', ['environnmentale', 'sociale', 'economique']);
-            $table->enum('statut', ['en attente', 'traité', 'archivé'])->default('en attente');
+            $table->enum('statut', ['nouveau','en attente', 'traité', 'archivé'])->default('nouveau');
             $table->string("pays");
             $table->string("wilaya");
             $table->string("daira");

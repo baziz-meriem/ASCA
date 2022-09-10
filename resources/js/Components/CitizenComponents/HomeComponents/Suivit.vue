@@ -95,6 +95,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div>
                     <div
                         class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto"
@@ -119,6 +120,11 @@
                                     <tr
                                         class="bg-white text-left my-3 w-full flex justify-around items-center py-2"
                                         v-if="Math.floor(index / 5) == page"
+                                        :class="
+                                            RowData.statut === 'nouveau'
+                                                ? 'bg-green-700 bg-opacity-10'
+                                                : 'bg-white'
+                                        "
                                     >
                                         <td class="w-18 text-sm">
                                             {{ RowData.date_creation }}
@@ -130,7 +136,10 @@
                                         <td class="w-22">
                                             {{ RowData.statut }}
                                         </td>
-                                        <td class="flex gap-2">
+                                        <td
+                                            class="flex gap-2"
+                                            v-if="RowData.statut === 'nouveau'"
+                                        >
                                             <a
                                                 @click="
                                                     redirect(
@@ -140,25 +149,30 @@
                                                 "
                                             >
                                                 <div
-                                                    class="cursor-pointer rounded-full w-8 h-8 bg-secondcolor p-3 mr-2 flex justify-center items-center"
+                                                    class="relative actionIcon cursor-pointer rounded-full w-8 h-8 bg-secondcolor p-3 mr-2 flex justify-center items-center"
                                                 >
                                                     <FontAwesomeIcon
                                                         icon="fa-solid fa-pen "
                                                         class="text-white text-2xl w-5"
+                                                    />
+                                                    <Tooltip
+                                                        tooltipText="Modifier le Signalement"
+                                                        class="tooltip"
                                                     /></div
                                             ></a>
                                             <div
                                                 @click="
-                                                    Duplicate(
-                                                        RowData.id,
-                                                        RowData.type
-                                                    )
+                                                    sendSignalement(RowData.id)
                                                 "
-                                                class="cursor-pointer rounded-full w-8 h-8 bg-secondcolor p-3 mr-2 flex justify-center items-center"
+                                                class="relative actionIcon cursor-pointer rounded-full w-8 h-8 bg-secondcolor p-3 mr-2 flex justify-center items-center"
                                             >
                                                 <FontAwesomeIcon
-                                                    icon="fa-solid fa-arrow-rotate-right "
+                                                    icon="fa-solid fa-paper-plane "
                                                     class="text-white text-2xl w-5"
+                                                />
+                                                <Tooltip
+                                                    tooltipText="Envoyer le Signalement"
+                                                    class="tooltip"
                                                 />
                                             </div>
                                             <div
@@ -169,11 +183,57 @@
                                                         RowData.statut
                                                     )
                                                 "
-                                                class="cursor-pointer rounded-full w-8 h-8 bg-secondcolor p-3 mr-2 flex justify-center items-center"
+                                                class="relative actionIcon cursor-pointer rounded-full w-8 h-8 bg-secondcolor p-3 mr-2 flex justify-center items-center"
                                             >
                                                 <font-awesome-icon
                                                     icon="fa-solid fa-trash-can"
                                                     class="text-white text-2xl h-4 w-4"
+                                                />
+                                                <Tooltip
+                                                    tooltipText="Supprimer le Signalement"
+                                                    class="tooltip"
+                                                />
+                                            </div>
+                                        </td>
+                                        <td
+                                            class="flex gap-2"
+                                            v-if="RowData.statut != 'nouveau'"
+                                        >
+                                            <a
+                                                @click="
+                                                    redirect(
+                                                        RowData.id,
+                                                        RowData.type
+                                                    )
+                                                "
+                                            >
+                                                <div
+                                                    class="actionIcon relative cursor-pointer rounded-full w-8 h-8 bg-secondcolor p-3 mr-2 flex justify-center items-center"
+                                                >
+                                                    <FontAwesomeIcon
+                                                        icon="fa-solid fa-pen "
+                                                        class="text-white text-2xl w-5"
+                                                    />
+                                                    <Tooltip
+                                                        tooltipText="Modifier le Signalement"
+                                                        class="tooltip"
+                                                    /></div
+                                            ></a>
+                                            <div
+                                                @click="
+                                                    cancelSignalement(
+                                                        RowData.id
+                                                    )
+                                                "
+                                                class="actionIcon relative cursor-pointer rounded-full w-8 h-8 bg-secondcolor p-3 mr-2 flex justify-center items-center"
+                                            >
+                                                <FontAwesomeIcon
+                                                    icon="fa-solid fa-power-off "
+                                                    class="text-white text-2xl w-5"
+                                                />
+                                                <Tooltip
+                                                    tooltipText="Annuler le Signalement"
+                                                    class="tooltip"
                                                 />
                                             </div>
                                         </td>
@@ -232,7 +292,7 @@
 </template>
 
 <script>
-import auth from "../../Authentication/auth.js"
+import Tooltip from "./Tooltip.vue";
 /*import for sweetAlert */
 import Swal from "sweetalert2/dist/sweetalert2.js";
 /* import the fontawesome core */
@@ -248,16 +308,27 @@ import {
     faTrashCan,
     faAngleLeft,
     faAngleRight,
+    faPaperPlane,
+    faPowerOff,
 } from "@fortawesome/free-solid-svg-icons";
 
 /* add icons to the library */
-library.add(faPen, faArrowRotateRight, faTrashCan, faAngleLeft, faAngleRight);
+library.add(
+    faPen,
+    faArrowRotateRight,
+    faTrashCan,
+    faAngleLeft,
+    faAngleRight,
+    faPaperPlane,
+    faPowerOff
+);
 
 /* add font awesome icon component */
 
 export default {
     components: {
         FontAwesomeIcon,
+        Tooltip,
     },
 
     data: function () {
@@ -281,9 +352,8 @@ export default {
             }
         },
         refresh() {
-            const id = auth.getloggedUser();
             axios
-                .get("/api/fetch",id)
+                .get("/api/fetch")
                 .then((response) => {
                     this.TableData = response.data;
                     this.activeRows = this.TableData;
@@ -305,6 +375,15 @@ export default {
                     (rowData) => rowData.statut === this.statut
                 );
             }
+        },
+        refresh() {
+            axios
+                .get("/api/fetch")
+                .then((response) => {
+                    this.TableData = response.data;
+                    this.activeRows = this.TableData;
+                })
+                .catch((error) => console.log(error));
         },
         Duplicate(id, type) {
             if (type === "contribution") {
@@ -422,7 +501,20 @@ export default {
                 }
             }
         },
-
+        sendSignalement(signalementID) {
+            axios
+                .patch(`/api/signalement/${signalementID}`, {
+                    statut: "en attente",
+                })
+                .then(this.refresh());
+        },
+        cancelSignalement(signalementID) {
+            axios
+                .patch(`/api/signalement/${signalementID}`, {
+                    statut: "nouveau",
+                })
+                .then(this.refresh());
+        },
         changeNature(event) {
             this.nature = event.target.value;
             this.activeRows = this.TableData.filter(
@@ -499,3 +591,12 @@ export default {
     },
 };
 </script>
+
+<style>
+.tooltip {
+    visibility: hidden;
+}
+.actionIcon:hover .tooltip {
+    visibility: visible;
+}
+</style>
