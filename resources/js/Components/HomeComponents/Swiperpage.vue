@@ -4,7 +4,7 @@
         :style="image"
     >
         <div
-            class="rounded-md px-8 py-7 md:w-5/12 text-left bg-white bg-opacity-50 blur-md"
+            class="rounded-md px-8 py-7 md:w-5/12 text-left bg-white bg-opacity-50 "
         >
             <label class="uppercase block font-extrabold md:text-4xl text-3xl"
                 >big title here
