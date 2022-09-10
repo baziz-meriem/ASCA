@@ -21,6 +21,7 @@ class Contribution extends Model
         'description',
         'proposition',
         'deleted',
+        'user_id'
     ];
     const UPDATED_AT = null;
     const CREATED_AT = 'date_creation';

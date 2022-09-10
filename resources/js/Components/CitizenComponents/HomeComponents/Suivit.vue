@@ -232,6 +232,7 @@
 </template>
 
 <script>
+import auth from "../../Authentication/auth.js"
 /*import for sweetAlert */
 import Swal from "sweetalert2/dist/sweetalert2.js";
 /* import the fontawesome core */
@@ -280,8 +281,9 @@ export default {
             }
         },
         refresh() {
+            const id = auth.getloggedUser();
             axios
-                .get("/api/fetch")
+                .get("/api/fetch",id)
                 .then((response) => {
                     this.TableData = response.data;
                     this.activeRows = this.TableData;
@@ -303,15 +305,6 @@ export default {
                     (rowData) => rowData.statut === this.statut
                 );
             }
-        },
-        refresh() {
-            axios
-                .get("/api/fetch")
-                .then((response) => {
-                    this.TableData = response.data;
-                    this.activeRows = this.TableData;
-                })
-                .catch((error) => console.log(error));
         },
         Duplicate(id, type) {
             if (type === "contribution") {

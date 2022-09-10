@@ -117,6 +117,7 @@ import Form1Contribution from "../Components/CitizenComponents/Forms/Form1Contri
 import Form2Contribution from "../Components/CitizenComponents/Forms/Form2Contribution.vue";
 import { ref } from "vue";
 import UserLayout from "../Layouts/UserLayout.vue";
+import auth from "../Components/Authentication/auth";
 
 export default {
     name: "Contribuer",

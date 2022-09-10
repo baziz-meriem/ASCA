@@ -1,4 +1,5 @@
-import {createRouter, createWebHistory}  from 'vue-router'
+import {createRouter, createWebHashHistory}  from 'vue-router'
+import * as VueRouter from "vue-router";
 import auth from './Components/Authentication/auth.js'
 
 
@@ -114,7 +115,7 @@ const routes = [
 ]
 
 const router = createRouter({
-    history: createWebHistory(),//for url form
+    history: createWebHashHistory(), //allows url refresh
     routes:routes,
     linkActiveClass:'active'
 });

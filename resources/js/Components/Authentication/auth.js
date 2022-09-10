@@ -2,6 +2,15 @@ import axios from 'axios';
 import auth from './auth.js';
 
 export default {
+    getloggedUser(){
+        var token = localStorage.getItem('laravel-token');
+        if(!token) {
+            return null;
+        }
+         token = JSON.parse(token).user.id;//to extract the access_token from the data
+        
+        return id;
+    },
     Register(user) {
         return axios.post('/api/auth/Register',user);
     },

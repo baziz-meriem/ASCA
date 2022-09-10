@@ -9,12 +9,8 @@ use Illuminate\Support\Facades\DB;
 class ContributionController extends Controller
 {
 
-    function fetch()
+    function fetch($id)
     {
-        //this keeps giving me errors i'm using constants fornow $id = Auth::user()->id;
-        // $id = auth()->user()->id;
-        //union between all 3 tables only get the records with the current logged user_id and deleted==false and allow duplicate ids
-        $id = 1;
         $data1 = DB::table('contributions')
             ->select('contributions.id', 'contributions.type', 'contributions.nature', 'contributions.statut', 'contributions.deleted', 'contributions.date_creation')
             ->Where(function ($query) use ($id) {
