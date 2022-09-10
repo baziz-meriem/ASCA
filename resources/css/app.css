@@ -1,3 +1,95 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .form-section {
+        @apply bg-gray-50 lg:mx-40 mx-5 mb-20 lg:px-20 px-5 py-10 rounded-3xl border border-gray-300 shadow-sm;
+    }
+    .form-input {
+        @apply border-gray-300 focus:ring  focus:ring-opacity-50 rounded-md shadow-sm  text-sm focus:ring-primcolor focus:border-primcolor  w-full p-2.5;
+    }
+    .form-select {
+        @apply block py-2.5 px-0 w-full text-sm text-secondcolor bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-primcolor focus:border-primcolor mb-2;
+    }
+    .form-check {
+        @apply w-4 h-4 text-primcolor bg-white rounded border-gray-300 focus:ring-primcolor focus:ring-2;
+    }
+    .select-card {
+        @apply border border-gray-300 shadow-sm rounded-xl py-10 lg:px-12 px-4 bg-white;
+    }
+    .form-button {
+        @apply text-sm text-primcolor border-2 rounded-md border-primcolor hover:bg-primcolor hover:text-white px-5 py-2 mt-5;
+    }
+    .form-button-red {
+        @apply text-sm text-red-400 border-2 rounded-md border-red-400 hover:bg-red-400 hover:text-white px-5 py-2 mt-5;
+    }
+    .form-text-area {
+        @apply block p-2 w-full text-sm text-secondcolor bg-white rounded-lg border border-gray-300 focus:ring-primcolor focus:border-primcolor mb-2;
+    }
+    .display-data {
+        @apply mx-2 my-4 p-2 text-sm text-left bg-lighterGreenColor rounded-xl capitalize;
+    }
+    .stats-cards {
+        @apply bg-gray-50 border border-gray-300 rounded-md px-4 py-5;
+    }
+}
+
+/* Swiper Styling  */
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.text-fields-errors {
+    background-color: #f4f4f4;
+    display: inline;
+    border-width: 1 px;
+    border-color: #d35738;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    border-radius: 0.5rem;
+    width: 100%;
+}
+
+.select-fields-errors {
+    display: block;
+    padding: 0.625rem;
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: #2b3238;
+    background-color: transparent;
+    border-bottom-width: 2px;
+    border-color: #d35738;
+    appearance: none;
+    margin-bottom: 0.5rem;
+}

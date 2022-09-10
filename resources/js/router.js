@@ -4,28 +4,32 @@ import auth from './Components/Authentication/auth.js'
 const routes = [
     {
         path:'/Home',
-        name:'Home',
-        component:()=>import('./Components/Home.vue'),
+        component:()=>import('./Pages/CitizenHome.vue'),
         //children:[{},{}],
 
         beforeEnter(to,from,next) { //route accessible only if logged in
             if(!auth.isLoggedIn()) {
                next('/SignIn');//if the user is not logged in
             } else {
-                next('/Welcome')
+                next('/citizenHome')
             }
         }
     }
     ,
+    {
+        path:'/',
+        name:'HomePage',
+        component:()=>import('./Pages/Home.vue')
+    },
     {
         path:'/Register',
         name:'Register',
         component:()=>import('./Components/Authentication/Register.vue')
     },
     {
-        path:'/',
-        name:'Welcome',
-        component:()=>import('./Components/Welcome.vue')
+        path:'/citizenHome',
+        name:'CitizenHome',
+        component:()=>import('./Pages/CitizenHome.vue'),
     },
     {
         path:'/SignIn',
@@ -35,7 +39,7 @@ const routes = [
             if(!auth.isLoggedIn()) {
                next();
             } else {
-                next('/Home')
+                next('/citizenHome')
             }
         }
     },

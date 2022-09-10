@@ -65,7 +65,6 @@
           </div>
        </form>
     </div>
-
     </template>  
     <script>
 import auth from './auth.js';
@@ -84,9 +83,9 @@ import auth from './auth.js';
         methods: {
                 async register() {
                 console.log(this.user);
-                 await auth.register(this.user)
+                 await auth.Register(this.user)
                     .then(({data}) => {
-                        this.$router.push('/Register');
+                        this.$router.push('/SignIn');
                     })
                     .catch((error) => {
                         console.log(error);

@@ -83,9 +83,10 @@ export default {
    },
    methods:{
             async SignIn() { 
-                  await auth.signIn(this.user)
+                  await auth.SignIn(this.user)
                   .then(() => {
                      console.log("sign in successfull");
+                     this.$router.push('/Home');
                     })
                     .catch((error) => {
                         console.log(error);

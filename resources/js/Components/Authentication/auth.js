@@ -2,11 +2,11 @@ import axios from 'axios';
 import auth from './auth.js';
 
 export default {
-    register(user) {
+    Register(user) {
         return axios.post('/api/auth/Register',user);
     },
 
-    signIn (user) {
+    SignIn (user) {
         return axios.post('/api/auth/SignIn',user)
         .then(response => {
             if(response.status === 200) {
