@@ -81,8 +81,8 @@
 
 <script>
     import Form1Adhesion from "../../Components/CitizenComponents/Forms/Form1Adhesion.vue";
-    import Form2Adhesion from "../../Components/CitizenComponents/Forms/Form1Adhesion.vue";
-    import Form3Adhesion from "../../Components/CitizenComponents/Forms/Form2Adhesion.vue";
+    import Form2Adhesion from "../../Components/CitizenComponents/Forms/Form2Adhesion.vue";
+    import Form3Adhesion from "../../Components/CitizenComponents/Forms/Form3Adhesion.vue";
     import { ref } from "vue";
     import UserLayout from "../../Layouts/UserLayout.vue";
 
@@ -93,7 +93,7 @@
         },
         setup() {
         const step = ref(0);
-        const steps = [Form3Adhesion, Form1Adhesion, Form3Adhesion];
+        const steps = [Form1Adhesion, Form2Adhesion, Form3Adhesion];
         
         return {
         step,steps
