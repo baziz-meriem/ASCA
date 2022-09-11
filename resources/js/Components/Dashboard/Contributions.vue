@@ -124,12 +124,15 @@
                     "
                 >
                     <h2 class="capitalize text-sm">{{ item.date_creation }}</h2>
-                    <div class="flex gap-4">
-                        <img
-                            :src=" item.profile_photo_path "
-                            class="h-11 w-11 rounded-full object-cover"
-                            alt="user photo"
-                        />
+                    <div class="flex gap-4 w-3/12">
+                        <div
+                            class="cursor-pointer rounded-full w-8 h-8 bg-secondcolor p-3 flex justify-center items-center"
+                        >
+                            <FontAwesomeIcon
+                                icon="fa-solid fa-user "
+                                class="text-white text-2xl h-4 w-4"
+                            />
+                        </div>
                         <div class="flex flex-col">
                             <h1 class="capitalize text-lg">{{ item.name }}</h1>
                             <h2 class="text-sm opacity-70">{{ item.email }}</h2>
