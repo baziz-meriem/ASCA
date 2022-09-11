@@ -1,13 +1,10 @@
 <template lang="">
     <div class="overflow-x-hidden">
-        <default-layout>
-            <customNavBar />
-            <Slider />
-            <Apropos />
-            <Counter />
-            <NosService />
-            <Videosection />
-        </default-layout>
+        <Slider />
+        <Apropos />
+        <Counter />
+        <NosService />
+        <Videosection />
     </div>
 </template>
 
