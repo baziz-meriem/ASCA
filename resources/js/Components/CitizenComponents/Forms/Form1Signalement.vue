@@ -316,6 +316,7 @@
 </template>
 
 <script>
+import auth from "../../../services/auth"
 import Loader from "../../Dashboard/Loader.vue";
 //vuelidate imports APIComp
 import { reactive } from "vue";
@@ -389,7 +390,7 @@ export default {
         },
         checkFormValidation() {
             this.signalementData["voir_respo"] = this.state.responsable[0];
-            this.signalementData["user_id"] = this.user.id;
+            this.signalementData["user_id"] = auth.getloggedUser().id;
             this.signalementData["depassement"] = "dede";
 
             this.v$.$validate(); // checks all inputs
@@ -410,7 +411,6 @@ export default {
             });
         },
     },
-    props: ["user"],
 };
 </script>
 

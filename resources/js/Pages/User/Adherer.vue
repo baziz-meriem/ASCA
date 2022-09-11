@@ -73,21 +73,6 @@
                     <div class="w-32 h-0.5 bg-secondcolor mt-9">
                         <div class="w-32 h-0.5 bg-secondcolor mt-1"></div>
                     </div>
-                    <div>
-                        <div   :class="step == 3? ' h-24 w-24 flex': ' h-20 w-20 flex'"
-                                class="border-4 border-secondcolor rounded-full justify-center items-center">
-                            <div :class="step == 3 ? 'h-20 w-20  p-2 font-extrabold text-3xl': 'h-16 w-16  p-2 font-bold text-2xl'" 
-                                class="rounded-full bg-lighter-primcolor flex justify-center items-center"  >
-                                <h1>4</h1>
-                            </div>
-                        </div>
-                        <h3 :class="step == 3 ? ' font-extrabold w-3' : 'w-3'">
-                            Informations d’adhesion 
-                        </h3>
-                    </div>
-                    <div class="w-32 h-0.5 bg-secondcolor mt-9">
-                        <div class="w-32 h-0.5 bg-secondcolor mt-1"></div>
-                    </div>
                 </div>
             </div>
             <component  v-bind:is="steps[step]" @next="nextStep" @scroll="scrollTop" > </component>
@@ -108,7 +93,7 @@
         },
         setup() {
         const step = ref(0);
-        const steps = [Form3Adhesion, Form2Adhesion, Form1Adhesion];
+        const steps = [Form3Adhesion, Form1Adhesion, Form3Adhesion];
         
         return {
         step,steps

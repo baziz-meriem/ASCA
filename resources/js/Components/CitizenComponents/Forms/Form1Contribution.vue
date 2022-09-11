@@ -179,9 +179,9 @@
                 <input
                     id="deputé"
                     type="checkbox"
-                    value="Député"
+                    value="Deputé"
                     class="form-check"
-                    v-model="contribution.député"
+                    v-model="contribution.deputé"
                 />
                 <label
                     for="inline-2-checkbox"
@@ -230,9 +230,9 @@ export default {
             daira: "",
             commune: "",
             codePostale: "",
-            maire: "",
-            wali: "",
-            deputé: "",
+            maire: false,
+            wali: false,
+            deputé: false,
         });
 
         const rules = {

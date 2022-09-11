@@ -113,18 +113,17 @@
 <script>
 import Form1Contribution from "../../Components/CitizenComponents/Forms/Form1Contribution.vue";
 import Form2Contribution from "../../Components/CitizenComponents/Forms/Form2Contribution.vue";
+import auth from "../../services/auth"
 
 import { ref } from "vue";
 export default {
     name: "Contribuer",
-    props: ["user"],
 
     data() {
         return {
-            loggedUser: { id: "" },
             updation: false,
             FormsData: { user_id: "" },
-            display: false, //to only display components when the FormsData contains the data
+            display: true, //to only display components when the FormsData contains the data
         };
     },
     setup() {
@@ -160,7 +159,7 @@ export default {
         },
         //store data in database in case its a new contribution
         storeData() {
-            this.FormsData.user_id = this.loggedUser.id;
+            this.FormsData.user_id = auth.getloggedUser().id;
             axios
                 .post("/api/store/Contribution", this.FormsData)
                 .then((response) => {
@@ -198,8 +197,6 @@ export default {
         },
     },
     mounted() {
-        this.loggedUser = JSON.parse(this.user);
-
         this.alert = this.$swal.mixin({
             position: "top-end",
             iconColor: "#529B9B",
@@ -230,7 +227,8 @@ export default {
                     Object.assign(this.FormsData, response.data[0]);
                 })
                 .catch((error) => console.log(error));
-        } else this.display = true; //in case its a new contribution creation
+        } else 
+        this.display = true; //in case its a new contribution creation
     },
 };
 </script>

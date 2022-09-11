@@ -32,15 +32,12 @@
                 </div>
             </div>
         </div>
-        <Form1Signalement :user="this.loggedUser" />
+        <Form1Signalement />
     </user-layout>
 </template>
 
 <script>
 import Form1Signalement from "../../Components/CitizenComponents/Forms/Form1Signalement.vue";
-
-import { ref } from "vue";
-
 /* import the fontawesome core */
 import { library } from "@fortawesome/fontawesome-svg-core";
 /* import font awesome icon component */
@@ -48,6 +45,7 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 /* import specific icons */
 import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 import UserLayout from "../../Layouts/userLayout.vue";
+import auth from "../../services/auth";
 /* add icons to the library */
 library.add(faExclamationCircle);
 export default {
@@ -56,14 +54,6 @@ export default {
         FontAwesomeIcon,
         UserLayout,
     },
-    props: ["user"],
-    data: function () {
-        return {
-            loggedUser: {},
-        };
-    },
-    mounted() {
-        this.loggedUser = JSON.parse(this.user);
-    },
+
 };
 </script>
