@@ -19,7 +19,7 @@ class AdminSeeder extends Seeder
             'name'=> 'Asma',
             'email' => 'asma@esi.dz',
             'password' => bcrypt('password'),
-            'role' => 'administrator'
+            'role' => 'administrateur'
         ]);
     }
 }

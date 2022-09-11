@@ -68,7 +68,7 @@
 </div>
 </template>  
 <script>
-import auth from './auth.js';
+import auth from '../../services/auth';
 
 export default {
    name: 'SignIn',
@@ -86,7 +86,13 @@ export default {
                   await auth.SignIn(this.user)
                   .then(() => {
                      console.log("sign in successfull");
-                     this.$router.push('/Home');
+                     
+                     if(auth.getloggedUser().role === "administrateur"){
+                         this.$router.push('/dashboard/citoyen');
+                     }else 
+                     if(auth.getloggedUser().role === "citoyen"){
+                        this.$router.push('/citizenHome');
+                     }
                     })
                     .catch((error) => {
                         console.log(error);

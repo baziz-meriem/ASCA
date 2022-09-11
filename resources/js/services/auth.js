@@ -7,9 +7,9 @@ export default {
         if(!token) {
             return null;
         }
-         token = JSON.parse(token).user.id;//to extract the access_token from the data
+         token = JSON.parse(token).user;//to extract the access_token from the data
         
-        return id;
+        return token;
     },
     Register(user) {
         return axios.post('/api/auth/Register',user);
@@ -41,6 +41,7 @@ export default {
         }
     }).then(() => {
         localStorage.removeItem('laravel-token');//remove token from the local storage
+        console.log('logout successful')
     })
      },
 

@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import Form1Signalement from "../Components/CitizenComponents/Forms/Form1Signalement.vue";
+import Form1Signalement from "../../Components/CitizenComponents/Forms/Form1Signalement.vue";
 
 import { ref } from "vue";
 
@@ -47,7 +47,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 /* import specific icons */
 import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
-import UserLayout from "../Layouts/userLayout.vue";
+import UserLayout from "../../Layouts/userLayout.vue";
 /* add icons to the library */
 library.add(faExclamationCircle);
 export default {

@@ -138,10 +138,10 @@
 </template>
 
 <script>
-import DonutChart from "../Components/userStats/DonutChart.vue";
-import Partenaire from "../Components/Dashboard/Partenaire.vue";
-import SignalementTable from "../Components/userStats/SignalementTable.vue";
-import ContributionTable from "../Components/userStats/ContributionTable.vue";
+import DonutChart from "../../Components/userStats/DonutChart.vue";
+import Partenaire from "../../Components/Dashboard/Partenaire.vue";
+import SignalementTable from "../../Components/userStats/SignalementTable.vue";
+import ContributionTable from "../../Components/userStats/ContributionTable.vue";
 /* import the fontawesome core */
 import { library } from "@fortawesome/fontawesome-svg-core";
 /* import font awesome icon component */

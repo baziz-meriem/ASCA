@@ -67,7 +67,7 @@
     </div>
     </template>  
     <script>
-import auth from './auth.js';
+import auth from '../../services/auth';
         export default {
             name:'Register',
         data() {
@@ -84,7 +84,7 @@ import auth from './auth.js';
                 async register() {
                 console.log(this.user);
                  await auth.Register(this.user)
-                    .then(({data}) => {
+                    .then(() => {
                         this.$router.push('/SignIn');
                     })
                     .catch((error) => {

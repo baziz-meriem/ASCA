@@ -1,18 +1,18 @@
-import {createRouter, createWebHashHistory}  from 'vue-router'
-import * as VueRouter from "vue-router";
-import auth from './Components/Authentication/auth.js'
+import {createRouter, createWebHistory}  from 'vue-router'
+import auth from './services/auth'
 
 
 // Import Pages
-import Home from "./Pages/Home.vue";
-import About from "./Pages/About.vue";
-import NoServices from "./Pages/NoServices.vue";
-import Contact from "./Pages/Contact.vue";
-import CitizenHome from "./Pages/CitizenHome.vue";
-import Adherer from "./Pages/Adherer.vue";
-import Signaler from "./Pages/Signaler.vue";
-import Contribuer from "./Pages/Contribuer.vue";
+import Home from "./Pages/Home/Home.vue";
+import About from "./Pages/Home/About.vue";
+import NoServices from "./Pages/Home/NoServices.vue";
+import Contact from "./Pages/Home/Contact.vue";
+import CitizenHome from "./Pages/User/Citizen/CitizenHome.vue";
+import Adherer from "./Pages/User/Adherer.vue";
+import Signaler from "./Pages/User/Signaler.vue";
+import Contribuer from "./Pages/User/Contribuer.vue";
 import Profile from "./Pages/Profile.vue";
+
 import SignIn from "./Pages/Authentication/SignIn.vue";
 import Register from "./Pages/Authentication/Register.vue";
 //Dashboard Pages
@@ -24,12 +24,13 @@ import ContributionPreviewPage from "./Pages/Dashboard/ContributionPreviewPage.v
 import SignalementPreviewPage from "./Pages/Dashboard/SignalementPreviewPage.vue";
 import CitoyenPage from "./Pages/Dashboard/CitoyenPage.vue";
 import PartenairePage from "./Pages/Dashboard/PartenairePage.vue";
-import UserSignalementDetails from "./Pages/UserSignalementDetails.vue";
 
-// import EditSignalement from "./Pages/Editsignalements.vue";
+import UserSignalementDetails from "./Pages/User/UserSignalementDetails.vue";
 
-import EditSignalement from "./Pages/EditSignalement.vue";
-import UserStats from "./Pages/UserStats.vue";
+
+
+import EditSignalement from "./Pages/User/EditSignalement.vue";
+import UserStats from "./Pages/User/UserStats.vue";
 
 
 const routes = [
@@ -50,7 +51,7 @@ const routes = [
     {
         path:'/',
         name:'HomePage',
-        component:()=>import('./Pages/Home.vue')
+        component:Home
     },
     {
         path:'/Register',
@@ -60,7 +61,7 @@ const routes = [
     {
         path:'/citizenHome',
         name:'CitizenHome',
-        component:()=>import('./Pages/CitizenHome.vue'),
+        component:CitizenHome,
     },
     {
         path:'/SignIn',
@@ -115,7 +116,7 @@ const routes = [
 ]
 
 const router = createRouter({
-    history: createWebHashHistory(), //allows url refresh
+    history: createWebHistory(), 
     routes:routes,
     linkActiveClass:'active'
 });

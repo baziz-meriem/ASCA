@@ -48,11 +48,11 @@ class AuthController extends Controller
             ],401);
         }
         $user = $request ->user();
-
+          
         if($user->role == 'administrateur') {
-            $tokenData = $user->createToken('Personal Access Token',['do-anything']);
+            $tokenData = $user->createToken('Personal Access Token',['administrateur']);//attaching a scope to the token
         }else {
-            $tokenData = $user->createToken('Personal Access Token',['can-create']);
+            $tokenData = $user->createToken('Personal Access Token',['citoyen']);
         }
         $token = $tokenData->token;
 

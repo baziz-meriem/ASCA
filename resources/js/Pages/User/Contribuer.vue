@@ -111,8 +111,8 @@
 </template>
 
 <script>
-import Form1Contribution from "../Components/CitizenComponents/Forms/Form1Contribution.vue";
-import Form2Contribution from "../Components/CitizenComponents/Forms/Form2Contribution.vue";
+import Form1Contribution from "../../Components/CitizenComponents/Forms/Form1Contribution.vue";
+import Form2Contribution from "../../Components/CitizenComponents/Forms/Form2Contribution.vue";
 
 import { ref } from "vue";
 export default {

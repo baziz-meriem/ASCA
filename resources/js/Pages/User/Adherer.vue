@@ -95,11 +95,11 @@
 </template>
 
 <script>
-    import Form2Adhesion from "../Components/CitizenComponents/Forms/Form2Adhesion.vue";
-    import Form3Adhesion from "../Components/CitizenComponents/Forms/Form3Adhesion.vue";
-    import Form4Adhesion from "../Components/CitizenComponents/Forms/Form4Adhesion.vue";
+    import Form1Adhesion from "../../Components/CitizenComponents/Forms/Form1Adhesion.vue";
+    import Form2Adhesion from "../../Components/CitizenComponents/Forms/Form1Adhesion.vue";
+    import Form3Adhesion from "../../Components/CitizenComponents/Forms/Form2Adhesion.vue";
     import { ref } from "vue";
-    import UserLayout from "../Layouts/UserLayout.vue";
+    import UserLayout from "../../Layouts/UserLayout.vue";
 
     export default {
         name: "Adherer",
@@ -108,7 +108,7 @@
         },
         setup() {
         const step = ref(0);
-        const steps = [Form4Adhesion, Form3Adhesion, Form2Adhesion];
+        const steps = [Form3Adhesion, Form2Adhesion, Form1Adhesion];
         
         return {
         step,steps

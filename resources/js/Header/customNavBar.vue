@@ -22,7 +22,7 @@
 </div>
 </template>
 <script>
-    import auth from '../Components/Authentication/auth'
+    import auth from '../services/auth'
     export default {
      methods:{
        async logout() {

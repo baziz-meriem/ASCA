@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdhesionController;
@@ -18,26 +19,36 @@ Route::group(['prefix' => 'auth'],function(){
         Route::get('logout',[AuthController::class, 'logout']);
 
     });
-
 });
-Route::group(['prefix' => 'user'],function(){
-    Route::group(['middleware' => 'auth:api'], function(){
-        Route::post('create-category', function () {
+
+//the token must have this scope to access the route 
+Route::group(['prefix' => 'citoyen','middleware' => 'auth:api'],function(){
+    Route::group(['middleware' => 'scope:citoyen'], function(){
+        Route::get('/citoyen-scope', function(){
             return response()->json([
-                'message' => 'Admin access',
+                'message' => 'Citizen can access this',
                 'status_code' => 200
             ],200);
-        })->middleware('scope:do-anything');//the access token must have this scope to access the route (only admin)
-        Route::post('edit-category', function () {
-            return response()->json([
-                'message' => 'Everyone access',
-                'status_code' => 200
-            ],200);
-        })->middleware('scope:do-anything,can-create');   // comma means or 
+        });
     });
 });
 
-Route::resource('categories','CategoryController');
+Route::group(['prefix' => 'admin','middleware' => 'auth:api'],function(){
+    Route::group(['middleware' => 'scope:administrateur'], function(){
+        Route::get('/admin-scope', function(){
+            return response()->json([
+                'message' => 'Admin can access this',
+                'status_code' => 200
+            ],200);
+        });
+    });
+
+});
+
+
+
+
+
 
 /*
 |--------------------------------------------------------------------------

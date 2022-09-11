@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import EditForm from "../Components/EditSignalement/EditForm.vue";
+import EditForm from "../../Components/EditSignalement/EditForm.vue";
 export default {
     components: {
         EditForm,

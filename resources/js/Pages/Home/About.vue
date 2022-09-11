@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import Apropos from "../Components/HomeComponents/Apropos.vue";
+import Apropos from "../../Components/HomeComponents/Apropos.vue";
 export default {
     name: "About",
     components: {
