@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('contributions', function (Blueprint $table) {
-            $contribution = 'Contributions';
+            
             $table->id();
             /* preocupation -> Vie sociale
              * Vie économique

@@ -35,7 +35,7 @@ class SignalementsSeeder extends Seeder
             'solution_propose' => Str::random(10),
             'deleted' => false,
             'user_id' => $id,
-            'date_creation' => Carbon::now(),
+            'date_creation' => Carbon::now()->toDateString(),
         ]);
     }
 }

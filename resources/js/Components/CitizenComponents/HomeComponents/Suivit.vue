@@ -292,6 +292,7 @@
 </template>
 
 <script>
+import auth from "../../../services/auth"    
 import Tooltip from "./Tooltip.vue";
 /*import for sweetAlert */
 import Swal from "sweetalert2/dist/sweetalert2.js";
@@ -351,15 +352,6 @@ export default {
             } else if (type == "adhesion") {
             }
         },
-        refresh() {
-            axios
-                .get("/api/fetch")
-                .then((response) => {
-                    this.TableData = response.data;
-                    this.activeRows = this.TableData;
-                })
-                .catch((error) => console.log(error));
-        },
         changeType(event) {
             this.type = event.target.value;
             this.activeRows = this.TableData.filter(
@@ -377,8 +369,9 @@ export default {
             }
         },
         refresh() {
+            const id = auth.getloggedUser().id;
             axios
-                .get("/api/fetch")
+                .get("/api/fetch/"+id)
                 .then((response) => {
                     this.TableData = response.data;
                     this.activeRows = this.TableData;
@@ -563,13 +556,6 @@ export default {
             );
         },
     },
-    /*mounted() {
-        // Recuppererer les signalements d'un utilisateur
-        axios.get(`/api/signalement/User/${this.user_id}`).then((response) => {
-            // We have the Data then we asign it to "TableData"
-            this.setSignalement(response.data);
-        });
-    },*/
     mounted() {
         this.alert = this.$swal.mixin({
             position: "top-end",

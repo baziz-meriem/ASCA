@@ -104,7 +104,7 @@ Route::patch("update/Contribution/{id}", [ContributionController::class, 'update
 Route::get("contribution/user/{user}", [ContributionController::class, 'getByUser']);
 
 //for fetching all 3 tables data
-Route::get("fetch", [ContributionController::class, 'fetch']);
+Route::get("fetch/{id}", [ContributionController::class, 'fetch']);
 //for real deletion from database
 Route::delete("delete/Signalement/{id}", [SignalementController::class, 'delete']);
 Route::delete("delete/Adhesion/{id}", [AdhesionController::class, 'delete']);

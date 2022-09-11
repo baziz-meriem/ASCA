@@ -51,7 +51,7 @@ class ContributionController extends Controller
     {
         $data = DB::table('contributions')
             ->join('users', 'users.id', '=', 'contributions.user_id')
-            ->select('contributions.id', 'users.name', 'users.email', 'users.profile_photo_path', 'contributions.nature', 'contributions.statut', 'contributions.date_creation')
+            ->select('contributions.id', 'users.name', 'users.email', 'contributions.nature', 'contributions.statut', 'contributions.date_creation')
             ->get();
         return $data;
     }

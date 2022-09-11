@@ -88,7 +88,7 @@ export default {
                      console.log("sign in successfull");
                      
                      if(auth.getloggedUser().role === "administrateur"){
-                         this.$router.push('/dashboard/citoyen');
+                         this.$router.push('/dashboard/signalements');
                      }else 
                      if(auth.getloggedUser().role === "citoyen"){
                         this.$router.push('/citizenHome');
