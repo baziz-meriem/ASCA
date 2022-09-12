@@ -11,38 +11,36 @@ use App\Http\Controllers\ContributionController;
 
 
 
-Route::group(['prefix' => 'auth'],function(){
-    Route::post('Register',[AuthController::class, 'Register']);
-    Route::post('SignIn',[AuthController::class, 'SignIn']);
+Route::group(['prefix' => 'auth'], function () {
+    Route::post('Register', [AuthController::class, 'Register']);
+    Route::post('SignIn', [AuthController::class, 'SignIn']);
 
-    Route::group(['middleware' => 'auth:api'],function (){
-        Route::get('logout',[AuthController::class, 'logout']);
-
+    Route::group(['middleware' => 'auth:api'], function () {
+        Route::get('logout', [AuthController::class, 'logout']);
     });
 });
 
-//the token must have this scope to access the route 
-Route::group(['prefix' => 'citoyen','middleware' => 'auth:api'],function(){
-    Route::group(['middleware' => 'scope:citoyen'], function(){
-        Route::get('/citoyen-scope', function(){
+//the token must have this scope to access the route
+Route::group(['prefix' => 'citoyen', 'middleware' => 'auth:api'], function () {
+    Route::group(['middleware' => 'scope:citoyen'], function () {
+        Route::get('/citoyen-scope', function () {
             return response()->json([
                 'message' => 'Citizen can access this',
                 'status_code' => 200
-            ],200);
+            ], 200);
         });
     });
 });
 
-Route::group(['prefix' => 'admin','middleware' => 'auth:api'],function(){
-    Route::group(['middleware' => 'scope:administrateur'], function(){
-        Route::get('/admin-scope', function(){
+Route::group(['prefix' => 'admin', 'middleware' => 'auth:api'], function () {
+    Route::group(['middleware' => 'scope:administrateur'], function () {
+        Route::get('/admin-scope', function () {
             return response()->json([
                 'message' => 'Admin can access this',
                 'status_code' => 200
-            ],200);
+            ], 200);
         });
     });
-
 });
 
 
@@ -83,7 +81,8 @@ Route::get('users', [UserController::class, "index"]);
 Route::get('users/{user}', [UserController::class, "show"]);
 /*Get the user stats */
 Route::get('user/stats/{user}', [UserController::class, "stats"]);
-
+/* Update user infos */
+Route::patch('user/{user}', [UserController::class, "update"]);
 // Contribution API Routes
 
 //Get All Contributions

@@ -90,7 +90,6 @@ class SignalementController extends Controller
     {
 
         $signalement->update($request->all());
-        return "ouael";
     }
 
     /**
