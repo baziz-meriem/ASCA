@@ -76,7 +76,10 @@
                         >
                     </div>
                 </div>
-                <div class="w-full md:w-full px-3 mb-6">
+                <div class="w-full md:w-full px-3 mb-6 py-2" v-if="submitting">
+                    <Loader />
+                </div>
+                <div class="w-full md:w-full px-3 mb-6" v-if="!submitting">
                     <button
                         class="appearance-none block w-full bg-primcolor text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-opacity-90 focus:outline-none focus:bg-white focus:border-gray-500"
                         type="submit"
@@ -143,9 +146,12 @@
 </template>
 <script>
 import auth from "../../services/auth";
-
+import Loader from "../../Components/Dashboard/Loader.vue";
 export default {
     name: "SignIn",
+    components: {
+        Loader,
+    },
     data() {
         return {
             user: {
@@ -153,10 +159,12 @@ export default {
                 password: "",
                 remember_me: false,
             },
+            submitting: false,
         };
     },
     methods: {
         async SignIn() {
+            this.submitting = true;
             await auth
                 .SignIn(this.user)
                 .then(() => {
@@ -173,6 +181,7 @@ export default {
                             this.$router.go();
                         });
                     }
+                    this.submitting = false;
                 })
                 .catch((error) => {
                     console.log(error);

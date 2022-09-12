@@ -112,6 +112,7 @@
                                     <th></th>
                                 </tr>
                             </thead>
+                            <div v-if="loading" class="py-10"><Loader /></div>
                             <tbody class="h-72 table-auto">
                                 <div
                                     v-for="(RowData, index) in activeRows"
@@ -292,7 +293,8 @@
 </template>
 
 <script>
-import auth from "../../../services/auth"    
+import auth from "../../../services/auth";
+import Loader from "../../../Components/Dashboard/Loader.vue";
 import Tooltip from "./Tooltip.vue";
 /*import for sweetAlert */
 import Swal from "sweetalert2/dist/sweetalert2.js";
@@ -330,6 +332,7 @@ export default {
     components: {
         FontAwesomeIcon,
         Tooltip,
+        Loader,
     },
 
     data: function () {
@@ -341,6 +344,7 @@ export default {
             TableData: [],
             activeRows: [],
             user_id: 1,
+            loading: false,
         };
     },
     methods: {
@@ -369,10 +373,12 @@ export default {
             }
         },
         refresh() {
+            this.loading = true;
             const id = auth.getloggedUser().id;
             axios
-                .get("/api/fetch/"+id)
+                .get("/api/fetch/" + id)
                 .then((response) => {
+                    this.loading = false;
                     this.TableData = response.data;
                     this.activeRows = this.TableData;
                 })

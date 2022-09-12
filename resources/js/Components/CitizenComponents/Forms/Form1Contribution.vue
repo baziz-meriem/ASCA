@@ -205,9 +205,7 @@
             </div>
         </div>
         <div class="text-right">
-            <button class="form-button" @click="nextForm()">
-                suivant
-            </button>
+            <button class="form-button" @click="nextForm()">suivant</button>
         </div>
     </div>
 </template>
@@ -220,7 +218,7 @@ import { required } from "@vuelidate/validators";
 
 export default {
     name: "ContributionForm1",
-    props: ["FormData","updation"],
+    props: ["FormData", "updation"],
     setup() {
         const contribution = reactive({
             v$: useVuelidate(),
@@ -254,10 +252,9 @@ export default {
         nextForm() {
             this.v$.$validate(); // checks all inputs
             if (!this.v$.$error) {
-
                 this.$emit("scroll");
-                this.$emit('saveData', this.contribution);
-                this.$emit("nextStep");//goto the next form 
+                this.$emit("saveData", this.contribution);
+                this.$emit("nextStep"); //goto the next form
             } else {
                 this.$emit("scroll");
             }
@@ -272,31 +269,31 @@ export default {
         },
     },
     mounted() {
+        if (this.updation) {
+            //copy specific fields from the record returned from DB
+            this.contribution.nature = this.FormData.nature;
+            this.contribution.pays = this.FormData.pays;
+            this.contribution.wilaya = this.FormData.wilaya;
+            this.contribution.commune = this.FormData.commune;
+            this.contribution.daira = this.FormData.daira;
+            this.contribution.codePostale = this.FormData.codePostale;
+            this.contribution.wali = this.FormData.wali;
+            this.contribution.deputé = this.FormData.deputé;
+            this.contribution.maire = this.FormData.maire;
 
-    if (this.updation){
-                    //copy specific fields from the record returned from DB
-        this.contribution.nature = this.FormData.nature;
-        this.contribution.pays = this.FormData.pays;
-        this.contribution.wilaya = this.FormData.wilaya;
-        this.contribution.commune = this.FormData.commune;
-        this.contribution.daira = this.FormData.daira;
-        this.contribution.codePostale = this.FormData.codePostale;
-        this.contribution.wali = this.FormData.wali;
-        this.contribution.deputé = this.FormData.deputé;
-        this.contribution.maire = this.FormData.maire;
+            //select items stored in database
+            this.selectElement("nature", this.FormData.nature);
+            this.selectElement("pays", this.FormData.pays);
+            this.selectElement("wilaya", this.FormData.wilaya);
+            this.selectElement("commune", this.FormData.commune);
+            this.selectElement("daira", this.FormData.daira);
 
-        //select items stored in database
-        this.selectElement("nature", this.FormData.nature);
-        this.selectElement("pays", this.FormData.pays);
-        this.selectElement("wilaya", this.FormData.wilaya);
-        this.selectElement("commune", this.FormData.commune);
-        this.selectElement("daira", this.FormData.daira);
-
-        //check the checkboxes according to database
-        this.selectElement("codePostale", this.FormData.codePostale);
-        this.checkElement("maire", this.FormData.deputé);
-        this.checkElement("deputé", this.FormData.maire);
-        this.checkElement("wali", this.FormData.wali);}
+            //check the checkboxes according to database
+            this.selectElement("codePostale", this.FormData.codePostale);
+            this.checkElement("maire", this.FormData.deputé);
+            this.checkElement("deputé", this.FormData.maire);
+            this.checkElement("wali", this.FormData.wali);
+        }
     },
 };
 </script>
