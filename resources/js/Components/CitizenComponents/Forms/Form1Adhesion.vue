@@ -14,7 +14,8 @@
             </select>
 
             <select
-                id="underline_select" :class=" v$.filiere.$error === true ? 'select-fields-errors focus:outline-none focus:ring-0 focus:border-orangeColor': ''"
+                id="underline_select" 
+                :class=" v$.filiere.$error === true ? 'select-fields-errors focus:outline-none focus:ring-0 focus:border-orangeColor': ''"
                 name="filiere"
                 class="form-select"
                 v-model="state.filiere"
@@ -29,15 +30,15 @@
         <div class="flex gap-36 w-75 h-50 mb-8">
             <span
                 class="text-orangeColor w-full pl-2 text-sm"
-                v-if="v$.nom.$error"
+                v-if="v$.filiere.$error"
             >
-                {{ v$.nom.$errors[0].$message }}
+                {{ v$.filiere.$errors[0].$message }}
             </span>
             <span
                 class="text-orangeColor w-full pl-2 text-sm"
-                v-if="v$.prenom.$error"
+                v-if="v$.niveau.$error"
             >
-                {{ v$.prenom.$errors[0].$message }}
+                {{ v$.niveau.$errors[0].$message }}
             </span>
         </div>
 
@@ -75,8 +76,7 @@
                 <label
                     for="inline-2-checkbox"
                     class="ml-2 text-base font-semibold"
-                    >Privé</label
-                >
+                    >Privé</label>
             </div>
         </div>
         <label class="block my-3 text-base font-bold" for="large_size"
@@ -91,8 +91,7 @@
             <button
                 class="text-sm text-primcolor dark:text-orangeColor border-2 rounded-md border-primcolor hover:bg-primcolor hover:text-white px-5 py-2 mt-5"
                 
-                @click ="nextForm()"
-            > 
+                @click ="nextForm()" > 
                 Submit
             </button>
         </div>
@@ -106,11 +105,7 @@ import useVuelidate from "@vuelidate/core";
 import { required } from "@vuelidate/validators";
 
 export default {
-    data:function(){
-      return{
-       
-      }
-    },
+
     setup() {
         const state = reactive({
             secteur : "Publique",
@@ -120,12 +115,11 @@ export default {
         });
         const rules = {
             niveau: { required },
-            niveau: { required },
+            filiere: { required },
         };
         const v$ = useVuelidate(rules, state);
         return { state, v$ };
     },
-
     emits: ["next","scroll"],
     methods: {
         setOptions(e) {
@@ -141,7 +135,8 @@ export default {
                 this.$emit("scroll");
             }
         },
-    },
+    },}
+    /*
     created() {
      
      axios.get('http://127.0.0.1:8000/api/getContribution/'+this.$route.params.id)
@@ -153,4 +148,5 @@ export default {
     }
 
 };
+*/
 </script>

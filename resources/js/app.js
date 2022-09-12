@@ -25,7 +25,12 @@ Alpine.start();
 //app.component("Datepicker", Datepicker);
 
 // Using the router By the App
-createApp(App).use(VueSweetalert2).use(Vuelidate).use(router).mount("#app");
+
+const app = createApp(App)
+app.use(VueSweetalert2);
+app.use(Vuelidate);
+app.use(router);
+app.mount("#app");
 
 //using vue validator package
 /*app.use(Vuelidate);

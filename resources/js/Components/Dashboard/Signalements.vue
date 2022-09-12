@@ -146,7 +146,7 @@
                                 <h1
                                     class="capitalize text-sm hover:underline cursor-pointer hover:text-primcolor"
                                 >
-                                   
+                                {{ item.user.name }}
                                 </h1>
                                 <h2 class="text-xs opacity-70">
                                     {{ item.user.email }}
