@@ -20,6 +20,9 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'date_de_naissance',
+        'address',
+        'phoneNumber',
         'password',
     ];
 
@@ -41,4 +44,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function signalements()
+    {
+        return $this->hasMany(Signalement::class);
+    }
+    public function contributions()
+    {
+        return $this->hasMany(Contribution::class);
+    }
 }

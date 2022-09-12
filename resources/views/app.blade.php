@@ -10,8 +10,9 @@
 </head>
 
 <body>
+
     <div id="app">
-        ded
+
     </div>
 
     @vite('resources/js/app.js')

@@ -316,7 +316,7 @@
 </template>
 
 <script>
-import auth from "../../../services/auth"
+import auth from "../../../services/auth";
 import Loader from "../../Dashboard/Loader.vue";
 //vuelidate imports APIComp
 import { reactive } from "vue";
@@ -408,6 +408,9 @@ export default {
 
                 this.showConfirmationAlert(false);
                 this.submitting = false;
+                this.$router.push({ path: "/citizenHome" }).then(() => {
+                    this.$router.go();
+                });
             });
         },
     },

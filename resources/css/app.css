@@ -7,7 +7,7 @@
         @apply bg-gray-50 lg:mx-40 mx-5 mb-20 lg:px-20 px-5 py-10 rounded-3xl border border-gray-300 shadow-sm;
     }
     .form-input {
-        @apply border-gray-300 focus:ring  focus:ring-opacity-50 rounded-md shadow-sm  text-sm focus:ring-primcolor focus:border-primcolor  w-full p-2.5;
+        @apply block p-2 py-3 text-sm text-secondcolor bg-white rounded-lg border border-gray-300 focus:ring-primcolor focus:border-primcolor mb-2 shadow-sm w-full;
     }
     .form-select {
         @apply block py-2.5 px-0 w-full text-sm text-secondcolor bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-primcolor focus:border-primcolor mb-2;

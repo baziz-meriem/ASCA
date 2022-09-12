@@ -20,7 +20,6 @@ class Contribution extends Model
         'wali',
         'description',
         'proposition',
-        'deleted',
         'user_id'
     ];
     const UPDATED_AT = null;

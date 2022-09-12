@@ -19,7 +19,10 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('role')->default('citoyen');//to give citoyen scope automatically
+            $table->string('role')->default('citoyen'); //to give citoyen scope automatically
+            $table->date('date_de_naissance');
+            $table->bigInteger('phoneNumber');
+            $table->string("address");
             $table->rememberToken();
             $table->timestamps();
         });

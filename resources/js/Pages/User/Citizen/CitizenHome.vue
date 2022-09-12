@@ -1,11 +1,7 @@
 <template lang="">
-    <user-layout>
-
-        <WelcomeSection />
-        <suivit />
-        <EventSlider />
-
-    </user-layout>
+    <WelcomeSection />
+    <suivit />
+    <EventSlider />
 </template>
 
 <script>

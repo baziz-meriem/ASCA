@@ -113,7 +113,7 @@
 <script>
 import Form1Contribution from "../../Components/CitizenComponents/Forms/Form1Contribution.vue";
 import Form2Contribution from "../../Components/CitizenComponents/Forms/Form2Contribution.vue";
-import auth from "../../services/auth"
+import auth from "../../services/auth";
 
 import { ref } from "vue";
 export default {
@@ -150,7 +150,7 @@ export default {
                     });
                 })
                 .catch((error) => {
-                    console.log("error message");
+                    console.log(error.message);
                 });
         },
         saveData(contribution) {
@@ -160,6 +160,7 @@ export default {
         //store data in database in case its a new contribution
         storeData() {
             this.FormsData.user_id = auth.getloggedUser().id;
+            console.log(this.FormsData);
             axios
                 .post("/api/store/Contribution", this.FormsData)
                 .then((response) => {
@@ -170,7 +171,7 @@ export default {
                     this.$router.push({ path: "/" });
                 })
                 .catch((error) => {
-                    console.log("error message");
+                    console.log(error.message);
                 });
         },
         //to scroll to the top of the form
@@ -227,8 +228,7 @@ export default {
                     Object.assign(this.FormsData, response.data[0]);
                 })
                 .catch((error) => console.log(error));
-        } else 
-        this.display = true; //in case its a new contribution creation
+        } else this.display = true; //in case its a new contribution creation
     },
 };
 </script>
