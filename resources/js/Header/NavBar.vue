@@ -42,11 +42,10 @@
                         ></path></svg
                 ></router-link>
                 <router-link to="/Profile">
-                    <!-- <img
-                        src="https://picsum.photos/seed/picsum/700/800"
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1024px-Circle-icons-profile.svg.png"
                         class="h-11 w-11 border-4 rounded-full border-secondcolor object-cover"
-                    /> -->
-                    profile
+                    />
                 </router-link>
                 <button @click="logout">
                     <svg

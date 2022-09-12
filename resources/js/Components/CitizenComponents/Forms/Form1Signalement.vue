@@ -408,9 +408,7 @@ export default {
 
                 this.showConfirmationAlert(false);
                 this.submitting = false;
-                this.$router.push({ path: "/citizenHome" }).then(() => {
-                    this.$router.go();
-                });
+                this.$router.push("/citizenHome");
             });
         },
     },
