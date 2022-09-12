@@ -36,34 +36,35 @@
                             <label
                                 class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                 for="Password"
-                                >Name</label
+                                >Nom</label
                             >
                             <input
                                 class="form-input"
                                 type="text"
                                 required
-                                v-model="user.name"
+                                v-model="user.Family_name"
                             />
                         </div>
 
                         <div class="w-full md:w-full px-3 mb-6">
                             <label
                                 class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                                for="Password"
-                                >Password</label
+                                for="date_de_naissance"
+                            >
+                                Date de naissance</label
                             >
                             <input
                                 class="form-input"
-                                type="password"
+                                type="date"
                                 required
-                                v-model="user.password"
+                                v-model="user.date_de_naissance"
                             />
                         </div>
                         <div class="w-full md:w-full px-3 mb-6">
                             <label
                                 class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                 for="phoneNumber"
-                                >phone Number</label
+                                >Numéro de telephone</label
                             >
                             <input
                                 class="form-input"
@@ -75,15 +76,14 @@
                         <div class="w-full md:w-full px-3 mb-6">
                             <label
                                 class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                                for="date_de_naissance"
-                            >
-                                date de naissance</label
+                                for="Password"
+                                >Mot de passe</label
                             >
                             <input
                                 class="form-input"
-                                type="date"
+                                type="password"
                                 required
-                                v-model="user.date_de_naissance"
+                                v-model="user.password"
                             />
                         </div>
                     </div>
@@ -92,7 +92,34 @@
                             <label
                                 class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                 for="Password"
-                                >Email Addresse</label
+                                >Prenom</label
+                            >
+                            <input
+                                class="form-input"
+                                type="text"
+                                required
+                                v-model="user.name"
+                            />
+                        </div>
+                        <div class="w-full md:w-full px-3 mb-6">
+                            <label
+                                class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                for="address"
+                            >
+                            Adresse</label
+                            >
+                            <input
+                                class="form-input"
+                                type="text"
+                                required
+                                v-model="user.address"
+                            />
+                        </div>
+                        <div class="w-full md:w-full px-3 mb-6">
+                            <label
+                                class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                for="Password"
+                                >Adresse électronique</label
                             >
                             <input
                                 class="form-input"
@@ -101,31 +128,18 @@
                                 v-model="user.email"
                             />
                         </div>
+                        
                         <div class="w-full md:w-full px-3 mb-6">
                             <label
                                 class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                 for="Password"
-                                >Password Confirmation</label
+                                >Confirmer le Mot de passe</label
                             >
                             <input
                                 class="form-input"
                                 type="password"
                                 required
                                 v-model="user.password_confirmation"
-                            />
-                        </div>
-                        <div class="w-full md:w-full px-3 mb-6">
-                            <label
-                                class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                                for="address"
-                            >
-                                address</label
-                            >
-                            <input
-                                class="form-input"
-                                type="text"
-                                required
-                                v-model="user.address"
                             />
                         </div>
                     </div>
@@ -212,6 +226,7 @@ export default {
         return {
             user: {
                 name: "",
+                family_name:"",
                 email: "",
                 date_de_naissance: "",
                 phoneNumber: "",

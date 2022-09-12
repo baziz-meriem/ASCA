@@ -19,13 +19,15 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'family_name',
         'email',
         'date_de_naissance',
         'address',
         'phoneNumber',
         'password',
     ];
-
+    const UPDATED_AT = null;
+    const CREATED_AT = 'date_creation';
     /**
      * The attributes that should be hidden for serialization.
      *
