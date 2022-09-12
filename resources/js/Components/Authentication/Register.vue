@@ -42,7 +42,7 @@
                                 class="form-input"
                                 type="text"
                                 required
-                                v-model="user.Family_name"
+                                v-model="user.family_name"
                             />
                         </div>
 

@@ -54,4 +54,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Contribution::class);
     }
+    public function adhesions()
+    {
+        return $this->hasMany(Adhesion::class);
+    }
 }

@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Carbon\Carbon;
 
 class Contribution extends Model
 {
@@ -22,7 +21,7 @@ class Contribution extends Model
         'proposition',
         'user_id'
     ];
-    const UPDATED_AT = null;
+    const UPDATED_AT = null;//to only display creation date
     const CREATED_AT = 'date_creation';
 
     public function user()

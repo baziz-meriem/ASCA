@@ -23,6 +23,7 @@ class AuthController extends Controller
 
         $user = new User();
         $user->name = $request->name;
+        $user->family_name = $request->family_name;
         $user->email = $request->email;
         $user->phoneNumber = $request->phoneNumber;
         $user->address = $request->address;
